@@ -6,25 +6,25 @@ public class SortMerge {
 	private static void merge(int[] arr, int start, int middle, int end) {
 		if(end < start || end < middle || start > middle) 
 			throw new IllegalArgumentException(new StringBuilder()
-				.append("Указатель на начало, середину и конец массива взаимно не допустимы ->")
+				.append("РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РЅР°С‡Р°Р»Рѕ, СЃРµСЂРµРґРёРЅСѓ Рё РєРѕРЅРµС† РјР°СЃСЃРёРІР° РІР·Р°РёРјРЅРѕ РЅРµ РґРѕРїСѓСЃС‚РёРјС‹ ->")
 				.append(" Start:" + start)
 				.append(" Middle:" + middle)
 				.append(" End:" + end)
 				.toString());
 		
-		//указатели на индекс левой и правой половин
+		//СѓРєР°Р·Р°С‚РµР»Рё РЅР° РёРЅРґРµРєСЃ Р»РµРІРѕР№ Рё РїСЂР°РІРѕР№ РїРѕР»РѕРІРёРЅ
 		int p = start;
 		int q = middle +1;
 		
-		//вычисляю необходимый размер буферного массива
+		//РІС‹С‡РёСЃР»СЏСЋ РЅРµРѕР±С…РѕРґРёРјС‹Р№ СЂР°Р·РјРµСЂ Р±СѓС„РµСЂРЅРѕРіРѕ РјР°СЃСЃРёРІР°
 		int len = end - start + 1;
 		int[] buf = new int[len];
 		
-		//прохожу по обоим половинам, и меньшее значение переношу в буфер
+		//РїСЂРѕС…РѕР¶Сѓ РїРѕ РѕР±РѕРёРј РїРѕР»РѕРІРёРЅР°Рј, Рё РјРµРЅСЊС€РµРµ Р·РЅР°С‡РµРЅРёРµ РїРµСЂРµРЅРѕС€Сѓ РІ Р±СѓС„РµСЂ
 		for(int i = 0; i < len; i++) {
 			
 			if (p <= middle && q <= end){
-				//если указатели левой и правой половины не достигля границы
+				//РµСЃР»Рё СѓРєР°Р·Р°С‚РµР»Рё Р»РµРІРѕР№ Рё РїСЂР°РІРѕР№ РїРѕР»РѕРІРёРЅС‹ РЅРµ РґРѕСЃС‚РёРіР»СЏ РіСЂР°РЅРёС†С‹
 	            if (arr[p] < arr[q]){
 	                buf[i] = arr[p];
 	                p++;
@@ -44,22 +44,22 @@ public class SortMerge {
 	        }
 		}
 		
-		//переливаю из буфера в рабочий массив
+		//РїРµСЂРµР»РёРІР°СЋ РёР· Р±СѓС„РµСЂР° РІ СЂР°Р±РѕС‡РёР№ РјР°СЃСЃРёРІ
 		for(int i = 0; i < len; i++) {
 			arr[start + i] = buf[i];
 		}
 	}
 	public static void sort(int[] arr, int start, int end) throws IllegalArgumentException {
-		if(end < start) throw new IllegalArgumentException("Указатель на начало массива меньше указателя на конец -> Start:" + start + " End:" + end);
+		if(end < start) throw new IllegalArgumentException("РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РЅР°С‡Р°Р»Рѕ РјР°СЃСЃРёРІР° РјРµРЅСЊС€Рµ СѓРєР°Р·Р°С‚РµР»СЏ РЅР° РєРѕРЅРµС† -> Start:" + start + " End:" + end);
 		if(end == start) return;
-		// индекс середины массива (с округлением в меньшую сторону)
+		// РёРЅРґРµРєСЃ СЃРµСЂРµРґРёРЅС‹ РјР°СЃСЃРёРІР° (СЃ РѕРєСЂСѓРіР»РµРЅРёРµРј РІ РјРµРЅСЊС€СѓСЋ СЃС‚РѕСЂРѕРЅСѓ)
 		int mid = Math.floorDiv(end - start, 2) + start;
 		
-		//рекурсивно вызываю сортировку к обеим половинам массива
+		//СЂРµРєСѓСЂСЃРёРІРЅРѕ РІС‹Р·С‹РІР°СЋ СЃРѕСЂС‚РёСЂРѕРІРєСѓ Рє РѕР±РµРёРј РїРѕР»РѕРІРёРЅР°Рј РјР°СЃСЃРёРІР°
 		sort(arr, start, mid);
 		sort(arr, mid+1, end);
 		
-		//Слияние половин с сортировкой
+		//РЎР»РёСЏРЅРёРµ РїРѕР»РѕРІРёРЅ СЃ СЃРѕСЂС‚РёСЂРѕРІРєРѕР№
 		merge(arr, start, mid, end);
 	}
 	
@@ -69,7 +69,7 @@ public class SortMerge {
 		
 		switch (testArray.length) {
 		case 0:
-			System.out.println("Входной массив пуст");
+			System.out.println("Р’С…РѕРґРЅРѕР№ РјР°СЃСЃРёРІ РїСѓСЃС‚");
 			return;
 		case 1:
 			System.out.println(Arrays.toString(testArray));
@@ -82,7 +82,7 @@ public class SortMerge {
 			
 			System.out.println(Arrays.toString(testArray));
 		} catch (IllegalArgumentException e) {
-			System.out.println(new StringBuilder("Невозможно выполнить сортировку. Не верные параметры: ")
+			System.out.println(new StringBuilder("РќРµРІРѕР·РјРѕР¶РЅРѕ РІС‹РїРѕР»РЅРёС‚СЊ СЃРѕСЂС‚РёСЂРѕРІРєСѓ. РќРµ РІРµСЂРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹: ")
 									.append(startIndex)
 									.append("; ")
 									.append(testArray.length));
